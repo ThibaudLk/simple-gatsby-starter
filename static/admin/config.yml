@@ -1,5 +1,6 @@
 backend:
-  name: test-repo
+  name: github
+  repo: ThibaudLk/simple-gatsby-blog
 
 media_folder: static/assets
 public_folder: assets
