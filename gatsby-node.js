@@ -19,20 +19,20 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `
   ).then(result => {
-    console.log(JSON.stringify(result, null, 2))
+    // console.log(JSON.stringify(result, null, 2))
     const posts = result.data.allMarkdownRemark.edges
 
     posts.forEach((post, index) => {
-    //   const prev = index === posts.length - 1 ? null : posts[index + 1].node
-    //   const next = index === 0 ? null : posts[index - 1].node
+      const prev = index === posts.length - 1 ? null : posts[index + 1].node
+      const next = index === 0 ? null : posts[index - 1].node
 
       createPage({
         path: post.node.frontmatter.slug,
         component: path.resolve(`./src/templates/article.js`),
         context: {
           slug: post.node.frontmatter.slug,
-        //   next,
-        //   prev,
+          next,
+          prev,
         },
       })
     })

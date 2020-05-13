@@ -4,8 +4,38 @@ backend:
 
 media_folder: static/assets
 public_folder: assets
+publish_mode: editorial_workflow
 
 collections:
+
+  # Collection representant les pages du site
+  - name: "pages"
+    label: "Pages"
+    files:
+      # La page d'accueil
+      - file: "src/pages/index.md"
+        label: "Page d'accueil"
+        name: "index"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index"}
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: image }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      
+      # La page à propos
+      - file: "src/pages/about.md"
+        label: "À propos"
+        name: "about"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about"}
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: image }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+          
+  # Collection representant les articles du blog
   - name: blog
     label: Articles
     folder: blog

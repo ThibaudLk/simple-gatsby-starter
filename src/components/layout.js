@@ -9,11 +9,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
-// import Header from "./header"
 // import "./layout.css"
 
 import { Layout, Menu } from 'antd';
-import { HomeOutlined, UploadOutlined, UserOutlined, BellOutlined, HeartTwoTone } from '@ant-design/icons';
+import { HomeOutlined, UserOutlined, HeartTwoTone } from '@ant-design/icons';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -23,6 +22,7 @@ const LayoutPerso = ({ children, page }) => {
       site {
         siteMetadata {
           title
+          author
         }
       }
     }
@@ -49,15 +49,6 @@ const LayoutPerso = ({ children, page }) => {
           </Link>
         </Menu.Item>
         <Menu.Item key="2">
-          <Link to="/page-2">
-            <BellOutlined />
-            <span className="nav-text">La page 2</span>
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="3" icon={<UploadOutlined />}>
-          nav 3
-        </Menu.Item>
-        <Menu.Item key="4">
           <Link to="/about">
             {<UserOutlined />}
             <span className="nav-text">À propos</span>
@@ -76,7 +67,7 @@ const LayoutPerso = ({ children, page }) => {
       </Content>
       <Footer style={{ textAlign: 'center' }}>
         Un Blog de type classique dirons-nous.<br/>
-        Made with <HeartTwoTone twoToneColor="#eb2f96" /> by DevDurable.
+        Made with <HeartTwoTone twoToneColor="#eb2f96" /> by {data.site.siteMetadata.author}.
       </Footer>
     </Layout>
   </Layout>
